@@ -1,7 +1,7 @@
 def handle_response(message) -> str:
-    p = message = message.lower()
+    p = message.lower()
 
     if p == "hi" or p == "hello":
         return "Hello there!"
-    
+        
     return "Bot works!, try 'hi' or 'hello'"
