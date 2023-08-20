@@ -37,6 +37,24 @@ def run_discord_bot():
         Bak ne güzel olmuş.
         """
         await interation.response.send_message('Pong!')
+
+    
+    @tree.command()
+    async def admin_command(interaction: discord.Interaction):
+        """A command only admins can use."""
+        print("Getting all roles of the user")
+        # get all roles of the user
+        roles = interaction.user.roles
+        print(roles)
+
+        # check if the user has the admin role
+        admin_role = discord.utils.get(roles, name="admin")
+        if admin_role is None:
+            print("User is not admin")
+            await interaction.response.send_message('You are not an admin!')
+            return
+
+        await interaction.response.send_message('Hello admin!')
     
 
     @client.event
