@@ -1,11 +1,12 @@
 import requests
 import config
 
-def upload_github(owner, filename, b64content):
+def upload_github(owner: str, filename: str, b64content: str, commit_message: str = "Upload file via Discord bot."):
     """
     Upload a file to a GitHub repo.
     All uploaded files are stored in the uploads folder.
     The file is uploaded to the uploads/{owner}/{filename} path.
+    Use multi-line strings for the commit message to add detailed information.
 
     Parameters
     ----------
@@ -15,6 +16,8 @@ def upload_github(owner, filename, b64content):
         The name of the file.
     b64content : str
         The base64 encoded content of the file.
+    commit_message : str
+        The commit message.
 
     Returns
     -------
@@ -31,7 +34,7 @@ def upload_github(owner, filename, b64content):
         "Authorization": f"token {GITHUB_TOKEN}"
     }
     data = {
-        "message": f"Upload from Discord Bot{owner} uploaded {filename}\n\nUploaded by Discord Bot",
+        "message": commit_message,
         "content": b64content
     }
 
